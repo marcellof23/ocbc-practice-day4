@@ -22,7 +22,6 @@ func Init() *gorm.DB {
 	user := os.Getenv("user")
 	dbname := os.Getenv("dbname")
 	password := os.Getenv("password")
-	print(fmt.Sprintf("host=%s port=%s user=%s dbname=%s password=%s", host, port, user, dbname, password))
 	db, err := gorm.Open("postgres", fmt.Sprintf("host=%s port=%s user=%s dbname=%s password=%s", host, port, user, dbname, password))
 
 	if err != nil {

@@ -14,11 +14,11 @@ func main() {
 	db := config.Init()
 	db.AutoMigrate(&entity.Employee{})
 
-	employeeRepo := employeerepository.New(db)
+	employeeRepo := employeerepository.New()
 	employeeUc := module.NewEmployeeUsecase(employeeRepo)
 	employeeHdl := handler.NewEmployeeHandler(employeeUc)
 
 	defer db.Close()
-	r := routes.SetupRoutes(*employeeHdl)
+	r := routes.SetupRoutes(db, *employeeHdl)
 	r.Run(":8081")
 }

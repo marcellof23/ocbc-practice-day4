@@ -13,7 +13,7 @@ type Employee struct {
 	JoinDate  time.Time `json:"joinDate"`
 	CreatedAt time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"created_at"`
 	UpdatedAt time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"updated_at"`
-	DeletedAt time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"deleted_at"`
+	DeletedAt time.Time `json:"deleted_at"`
 }
 
 type CreateEmployeeInput struct {
