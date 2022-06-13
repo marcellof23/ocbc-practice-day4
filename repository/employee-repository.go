@@ -1,4 +1,4 @@
-package employeerepository
+package repository
 
 import (
 	"errors"

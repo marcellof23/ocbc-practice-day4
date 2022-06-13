@@ -12,7 +12,9 @@ import (
 func main() {
 
 	db := config.Init()
-	db.AutoMigrate(&entity.Employee{})
+	db.Model(&entity.Employee{}).Related(&entity.Attendance{})
+	db.AutoMigrate(&entity.Employee{}, entity.Attendance{})
+	db.Model(&entity.Attendance{}).AddForeignKey("employee_id", "employees(id)", "RESTRICT", "RESTRICT")
 
 	employeeRepo := employeerepository.New()
 	employeeUc := module.NewEmployeeUsecase(employeeRepo)
